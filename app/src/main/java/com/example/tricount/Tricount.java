@@ -1,8 +1,9 @@
 package com.example.tricount;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Tricount {
+public class Tricount implements Serializable {
     private String titre;
     private String description;
     private String date;

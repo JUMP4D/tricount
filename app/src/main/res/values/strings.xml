@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Tricount</string>
+    <string name="title_add_tricount">Ajouter Tricount</string>
+    <string name="text_nom">Nom :</string>
+    <string name="text_edit_nom">Nom</string>
+    <string name="text_description">Description :</string>
+    <string name="text_edit_description">Description</string>
+    <string name="text_date">Date :</string>
+    <string name="text_edit_date">Date</string>
+</resources>

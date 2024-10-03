@@ -44,6 +44,7 @@
             android:hint="@string/text_edit_nom"
             android:textSize="20sp"
             android:layout_marginStart="30dp"
+            android:background="@drawable/rounded_input"
             />
     </LinearLayout>
     <LinearLayout
@@ -71,6 +72,7 @@
             android:ems="10"
             android:hint="@string/text_edit_description"
             android:textSize="20sp"
+            android:background="@drawable/rounded_input"
             />
     </LinearLayout>
     <LinearLayout
@@ -100,6 +102,7 @@
             android:textSize="20sp"
             android:layout_marginStart="30dp"
             android:inputType="date"
+            android:background="@drawable/rounded_input"
             />
     </LinearLayout>
 

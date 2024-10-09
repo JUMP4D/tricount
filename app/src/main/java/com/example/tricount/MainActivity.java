@@ -2,21 +2,13 @@ package com.example.tricount;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.tricount.databinding.ActivityMainBinding;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
         tricountList = new ArrayList<>();
-        // Initialiser et configurer le RecyclerView
-        adapter = new TricountAdapter(tricountList);
+        adapter = new TricountAdapter(tricountList, this);
         binding.recyclerTricount.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerTricount.setAdapter(adapter);
 
@@ -57,6 +49,15 @@ public class MainActivity extends AppCompatActivity {
                 activityResultLauncher.launch(myIntent);
             }
         });
-    }
 
+        binding.recyclerTricount.addOnItemTouchListener(new RecyclerTouchListener(this, binding.recyclerTricount, new RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Tricount tricount = tricountList.get(position);
+                Intent intent = new Intent(MainActivity.this, TricountDetailsActivity.class);
+                intent.putExtra("tricount", tricount);
+                startActivity(intent);
+            }
+        }));
+    }
 }

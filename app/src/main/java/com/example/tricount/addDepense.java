@@ -3,25 +3,29 @@ package com.example.tricount;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.example.tricount.databinding.ActivityAddDepenseBinding;
 
-import com.example.tricount.databinding.ActivityAddtricountBinding;
 
-public class addTricount extends AppCompatActivity {
+public class addDepense extends AppCompatActivity {
 
-    private ActivityAddtricountBinding binding;
+    private ActivityAddDepenseBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityAddtricountBinding.inflate(getLayoutInflater());
+        binding = ActivityAddDepenseBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        Intent depenseIntent = getIntent();
+        Tricount tricount = (Tricount)depenseIntent.getSerializableExtra("tricount");
 
         binding.buttonValider.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,15 +33,16 @@ public class addTricount extends AppCompatActivity {
                 String nom = binding.editNom.getText().toString();
                 String description = binding.editDesc.getText().toString();
                 String date = binding.editDate.getText().toString();
-                Tricount tricount = new Tricount(nom, description, date);
+                Double montant = Double.parseDouble(binding.editMontant.getText().toString());
+                Depense depense = new Depense(nom, description, montant, date);
+                tricount.ajouterDepense(new Depense(nom, description, montant, date));
+                Toast.makeText(addDepense.this, tricount.toString(), Toast.LENGTH_SHORT).show();
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("tricount", tricount);
                 setResult(1, resultIntent);
                 finish();
-
             }
         });
-
-
-        }
     }
+
+}

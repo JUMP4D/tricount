@@ -26,10 +26,11 @@
         android:id="@+id/floatingadd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/circleplus"
         app:backgroundTint="@color/white"
         android:layout_gravity="right"
         android:layout_marginBottom="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
+        style="@style/addButton"
+        app:elevation="0dp"
         />
 </LinearLayout>

@@ -1,5 +1,4 @@
 package com.example.tricount;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -40,6 +39,11 @@ public class Tricount implements Serializable {
 
     public String getDate() {
         return date;
+    }
+
+    public String getTotal_depense() {
+
+        return total_depense + "euros";
     }
 
     public String toString(){

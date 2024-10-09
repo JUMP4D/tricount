@@ -1,6 +1,8 @@
 package com.example.tricount;
 
-public class Depense {
+import java.io.Serializable;
+
+public class Depense implements Serializable {
     private String titre;
     private String description;
     private double montant;

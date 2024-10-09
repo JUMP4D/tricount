@@ -11,14 +11,14 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="217dp"
-        android:src="@drawable/LogoTricount"
+
     />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerTricount"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
         />
 
 

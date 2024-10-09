@@ -52,14 +52,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        binding.recyclerTricount.setOnClickListener(new View.OnClickListener() {
+        binding.recyclerTricount.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), binding.recyclerTricount, new RecyclerViewClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view, int position) {
                 Intent myIntent = new Intent(getApplicationContext(), ConsultationActivity.class);
-                myIntent.putExtra("tricount", (Serializable) tricountList);
+                myIntent.putExtra("tricount", (Serializable) tricountList.get(position));
                 startActivity(myIntent);
             }
-        });
+
+
+
+        }));
     }
 
 }

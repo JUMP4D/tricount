@@ -21,16 +21,7 @@
         android:layout_weight="30"
         />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E34234"
-        android:gravity="center"
-        android:padding="15dp"
-        android:text="Tricount"
-        android:textColor="#000000"
-        android:textSize="40sp" />
+
 
 
 </LinearLayout>

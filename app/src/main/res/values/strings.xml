@@ -23,6 +23,7 @@
     <string name="text_prenom">Prenom :</string>
     <string name="add_Membre">Ajouter un membre</string>
     <string name="text_Membre">Membres</string>
+    <string name="btn_retour">retour</string>
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus

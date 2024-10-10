@@ -20,7 +20,7 @@ public class MembreActivity extends AppCompatActivity {
 
     private List<User> membreList;
     private MembreAdapter adapter;
-
+    private User membre;
     private ActivityMembreBinding binding;
     private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new
             ActivityResultCallback<ActivityResult>() {
@@ -28,11 +28,16 @@ public class MembreActivity extends AppCompatActivity {
                 public void onActivityResult(ActivityResult result) {
                     if(result.getResultCode() == 1){
                         Intent resultIntent = result.getData();
-                        User membre = (User)resultIntent.getSerializableExtra("membre");
+                        membre = (User)resultIntent.getSerializableExtra("membre");
                         membreList.add(membre);
                     }
                 }
             });
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("membreList", new ArrayList<>(membreList));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,16 @@ public class MembreActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent AddMemberintent = new Intent(getApplicationContext(), AddMemberActivity.class);
                 activityResultLauncher.launch(AddMemberintent);
+            }
+        });
+
+        binding.buttonRetour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("member", membre);
+                setResult(1, resultIntent);
+                finish();
             }
         });
     }

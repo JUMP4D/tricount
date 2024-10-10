@@ -13,7 +13,7 @@ import com.example.tricount.databinding.ActivityAddMemberBinding;
 
 public class AddMemberActivity extends AppCompatActivity {
 private ActivityAddMemberBinding binding;
-
+private User membre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ private ActivityAddMemberBinding binding;
             public void onClick(View view) {
                 String nom = binding.editNom.getText().toString();
                 String prenom = binding.editPrenom.getText().toString();
-                User membre = new User(nom, prenom);
+                membre = new User(nom, prenom);
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("membre", membre);
                 setResult(1, resultIntent);

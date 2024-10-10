@@ -22,10 +22,11 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <TextView
+            android:id="@+id/depensesTextView"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@color/teal_200"
@@ -49,6 +50,13 @@
 
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerTricount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
 
 
 </LinearLayout>

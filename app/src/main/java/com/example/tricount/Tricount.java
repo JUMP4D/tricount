@@ -2,6 +2,7 @@ package com.example.tricount;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Tricount implements Serializable {
     private String titre;
@@ -45,4 +46,7 @@ public class Tricount implements Serializable {
     public String toString(){
         return "Titre: " + this.titre + "\nDescription: " + this.description + "\nDate: " + this.date;
     }
+
+
+
 }

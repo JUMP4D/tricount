@@ -13,6 +13,10 @@ public class Depense {
         this.date = date;
     }
 
+    public static void add(Depense depense1) {
+    }
+
+
     public String getTitre() {
         return titre;
     }

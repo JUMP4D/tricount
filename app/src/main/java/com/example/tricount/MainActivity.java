@@ -8,16 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tricount.databinding.ActivityMainBinding;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,17 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private List<Tricount> tricountList;
     private TricountAdapter adapter;
-    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new
-            ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if(result.getResultCode() == 1){
-                        Intent resultIntent = result.getData();
-                        Tricount tricount = (Tricount)resultIntent.getSerializableExtra("tricount");
-                        tricountList.add(tricount);
-                    }
-                }
-            });
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
         tricountList = new ArrayList<>();
+        Tricount tricount1 = new Tricount("Vacances", "Vacance", "03/10/2024");
+        Tricount tricount2 = new Tricount("Vacances", "Vacance", "03/10/2024");
+        tricountList.add(tricount1);
+        tricountList.add(tricount2);
+
         // Initialiser et configurer le RecyclerView
         adapter = new TricountAdapter(tricountList);
         binding.recyclerTricount.setLayoutManager(new LinearLayoutManager(this));
@@ -54,9 +48,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(getApplicationContext(), addTricount.class);
-                activityResultLauncher.launch(myIntent);
+                startActivity(myIntent);
             }
         });
+
+        binding.recyclerTricount.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), binding.recyclerTricount, new RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent myIntent = new Intent(getApplicationContext(), ConsultationActivity.class);
+                myIntent.putExtra("tricount", (Serializable) tricountList.get(position));
+                startActivity(myIntent);
+            }
+
+
+
+        }));
     }
 
 }

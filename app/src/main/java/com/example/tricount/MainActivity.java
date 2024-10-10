@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 Tricount tricount = tricountList.get(position);
-                Intent intent = new Intent(MainActivity.this, TricountDetailsActivity.class);
-                intent.putExtra("tricount", tricount);
-                startActivity(intent);
+                Intent detailintent = new Intent(MainActivity.this, TricountDetailsActivity.class);
+                detailintent.putExtra("tricount", tricount);
+                startActivity(detailintent);
             }
         }));
     }

@@ -25,7 +25,12 @@ public class Depense implements Serializable {
     }
 
     public double getMontant() {
+
         return montant;
+    }
+
+    public String StringMonant() {
+        return montant + "€";
     }
 
     public String getDate() {
